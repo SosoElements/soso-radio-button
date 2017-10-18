@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>soso-radio-button demo</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../soso-radio-button.html">
+
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .colored {
+        --soso-radio-color: blue;
+      }
+    </style>
+  </custom-style>
+</head>
+
+<body>
+  <div class="vertical-section-container centered">
+    <h3>Basic soso-radio-button demo</h3>
+    <demo-snippet>
+      <template>
+        <soso-radio-button label="Radio one"></soso-radio-button>
+        <soso-radio-button label="Radio two" checked></soso-radio-button>
+        <soso-radio-button class="colored" label="Radio blue" checked></soso-radio-button>
+      </template>
+    </demo-snippet>
+  </div>
+</body>
+
+</html>

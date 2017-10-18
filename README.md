@@ -1,2 +1,3 @@
-# soso-radio-button
+# \<soso-radio-button\>
+
 Simple radio button

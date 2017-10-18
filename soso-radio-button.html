@@ -1,0 +1,83 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-iconset-svg/iron-iconset-svg.html">
+
+<iron-iconset-svg name="sosoradio" size="24">
+  <svg>
+    <defs>
+      <g id="checked">
+        <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+        />
+      </g>
+      <g id="unchecked">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+        />
+      </g>
+    </defs>
+  </svg>
+</iron-iconset-svg>
+
+<dom-module id="soso-radio-button">
+  <template>
+    <style>
+      :host {
+        display: block;
+        font-family: inherit;
+        font-weight: inherit;
+        color: inherit;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+
+      :host(.disabled) {
+        opacity: 0.6 !important;
+        cursor: default;
+        pointer-events: none;
+      }
+
+      iron-icon {
+        cursor: pointer;
+        color: var(--soso-radio-color, currentColor);
+      }
+
+      iron-icon,
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        white-space: nowrap;
+      }
+    </style>
+    <label on-click="_onClick">
+      <iron-icon icon="[[_icon]]"></iron-icon>
+      <span>[[label]]</span>
+    </label>
+  </template>
+  <script>
+    class SosoRadioButton extends Polymer.Element {
+      static get is() { return 'soso-radio-button'; }
+      static get properties() {
+        return {
+          label: String,
+          name: String,
+          _icon: String,
+          checked: {
+            type: Boolean,
+            value: false,
+            notify: true,
+            observer: '_valueChange'
+          }
+        };
+      }
+      _valueChange() {
+        this._icon = this.checked ? "sosoradio:checked" : "sosoradio:unchecked";
+      }
+      _onClick() {
+        this.set('checked', !this.checked);
+        this.dispatchEvent(new CustomEvent('change', { bubbles: true, composed: true, detail: { checked: this.checked } }));
+      }
+    }
+    window.customElements.define(SosoRadioButton.is, SosoRadioButton);
+  </script>
+</dom-module>
