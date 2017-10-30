@@ -1,21 +1,5 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../iron-icon/iron-icon.html">
-<link rel="import" href="../iron-iconset-svg/iron-iconset-svg.html">
-
-<iron-iconset-svg name="sosoradio" size="24">
-  <svg>
-    <defs>
-      <g id="checked">
-        <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-        />
-      </g>
-      <g id="unchecked">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-        />
-      </g>
-    </defs>
-  </svg>
-</iron-iconset-svg>
+<link rel="import" href="../soso-icon/soso-icon.html">
 
 <dom-module id="soso-radio-button">
   <template>
@@ -37,12 +21,9 @@
         pointer-events: none;
       }
 
-      iron-icon {
+      soso-icon {
         cursor: pointer;
         color: var(--soso-radio-color, currentColor);
-      }
-
-      iron-icon {
         display: inline-block;
         vertical-align: middle;
         white-space: nowrap;
@@ -54,7 +35,7 @@
       }
     </style>
     <label on-click="_onClick">
-      <iron-icon icon="[[_icon]]"></iron-icon>
+      <soso-icon icon="[[_icon]]" icon-map="[[_iconMap]]"></soso-icon>
       <span>[[label]]</span>
     </label>
   </template>
@@ -66,6 +47,15 @@
           label: String,
           name: String,
           _icon: String,
+          _iconMap: {
+            type: Object,
+            value: () => {
+              return {
+                "checked": "M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z",
+                "unchecked": "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              };
+            }
+          },
           checked: {
             type: Boolean,
             value: false,
@@ -75,7 +65,7 @@
         };
       }
       _valueChange() {
-        this._icon = this.checked ? "sosoradio:checked" : "sosoradio:unchecked";
+        this._icon = this.checked ? "checked" : "unchecked";
       }
       _onClick() {
         this.set('checked', !this.checked);
