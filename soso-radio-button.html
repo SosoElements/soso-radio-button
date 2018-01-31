@@ -61,6 +61,11 @@
             value: false,
             notify: true,
             observer: '_valueChange'
+          },
+          disabled: {
+            type: Boolean,
+            value: false,
+            observer: '_onDisableChange'
           }
         };
       }
@@ -70,6 +75,13 @@
       _onClick() {
         this.set('checked', !this.checked);
         this.dispatchEvent(new CustomEvent('change', { bubbles: true, composed: true, detail: { checked: this.checked } }));
+      }
+      _onDisableChange() {
+        if (this.disabled) {
+          this.classList.add("disabled");
+        } else {
+          this.classList.remove("disabled");
+        }
       }
     }
     window.customElements.define(SosoRadioButton.is, SosoRadioButton);
