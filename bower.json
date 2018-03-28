@@ -4,7 +4,7 @@
   "main": "soso-radio-button.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
-    "soso-icon": "SosoElements/soso-icon#^0.0.1"
+    "soso-icon": "SosoElements/soso-icon#^0.0.2"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
